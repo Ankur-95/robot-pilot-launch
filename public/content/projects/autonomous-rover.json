@@ -1,0 +1,14 @@
+{
+  "id": "autonomous-rover",
+  "title": "Autonomous Rover Navigation",
+  "summary": "Built a ROS-based autonomous rover capable of SLAM-driven navigation in unstructured environments using LiDAR and camera fusion.",
+  "tech": ["ROS2", "Python", "Gazebo", "SLAM", "OpenCV"],
+  "type": "simulation",
+  "role": "Lead Developer",
+  "image": "",
+  "video": "",
+  "githubUrl": "",
+  "demoUrl": "",
+  "has3DViewer": false,
+  "featured": true
+}

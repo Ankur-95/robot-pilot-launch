@@ -1,0 +1,14 @@
+{
+  "id": "drone-controller",
+  "title": "Quadcopter Flight Controller",
+  "summary": "Designed and implemented a custom PID-based flight controller for a quadcopter with GPS waypoint navigation and obstacle avoidance.",
+  "tech": ["C++", "STM32", "PID Control", "IMU", "GPS"],
+  "type": "physical",
+  "role": "Hardware & Firmware Engineer",
+  "image": "",
+  "video": "",
+  "githubUrl": "",
+  "demoUrl": "",
+  "has3DViewer": false,
+  "featured": true
+}

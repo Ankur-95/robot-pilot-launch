@@ -1,0 +1,121 @@
+{
+  "personal": {
+    "name": "Ankur Rakesh Ujawane",
+    "initials": "ARU",
+    "title": "Robotics Enthusiast",
+    "persona": "Future Robotics Engineer • Robotics Research Enthusiast • AI + Robotics Integrator",
+    "tagline": "I'm ready to work hard enough to make the competition less.",
+    "city": "Pune, India",
+    "email": "your.email@example.com",
+    "resumeUrl": "/resume.pdf"
+  },
+  "about": {
+    "statement": "I'm passionate about building intelligent robotic systems that bridge the gap between artificial intelligence and real-world mechanical systems. My focus spans autonomous navigation, computer vision, and embedded control — driven by the belief that robotics will reshape how we interact with the physical world.",
+    "highlights": [
+      {
+        "icon": "GraduationCap",
+        "title": "Education",
+        "description": "DY Patil College of Engineering, Pune — pursuing excellence in robotics and automation engineering."
+      },
+      {
+        "icon": "Briefcase",
+        "title": "Experience",
+        "description": "Hands-on research and internship work in ROS-based simulation, autonomous systems, and embedded control."
+      },
+      {
+        "icon": "Rocket",
+        "title": "Drive",
+        "description": "Ready to work hard enough to make the competition less. Building towards a career at the frontier of robotics."
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "year": "2024",
+      "title": "Robotics Research Intern",
+      "institution": "Research Lab — Autonomous Systems",
+      "description": "Worked on ROS-based simulation environments and path planning algorithms."
+    },
+    {
+      "year": "2023",
+      "title": "B.Tech in Engineering",
+      "institution": "DY Patil College of Engineering, Pune",
+      "description": "Core coursework in robotics, embedded systems, and control theory."
+    },
+    {
+      "year": "2022",
+      "title": "Robotics Club Lead",
+      "institution": "DY Patil College of Engineering",
+      "description": "Led a team building autonomous bots for national-level competitions."
+    },
+    {
+      "year": "2021",
+      "title": "Started Engineering Journey",
+      "institution": "DY Patil College of Engineering, Pune",
+      "description": "Began exploring robotics, programming fundamentals, and embedded hardware."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming",
+      "icon": "Code",
+      "note": "Strong foundations in systems-level and scripting languages for robotics applications.",
+      "items": ["C++", "Python", "MATLAB"]
+    },
+    {
+      "category": "Robotics",
+      "icon": "Bot",
+      "note": "End-to-end experience with industry-standard robotics frameworks and simulators.",
+      "items": ["ROS", "Gazebo", "RViz", "Simulation", "SLAM"]
+    },
+    {
+      "category": "Embedded Systems",
+      "icon": "Cpu",
+      "note": "Hands-on prototyping with microcontrollers and sensor integration.",
+      "items": ["Arduino", "Raspberry Pi", "STM32", "Sensor Fusion"]
+    },
+    {
+      "category": "AI in Robotics",
+      "icon": "Brain",
+      "note": "Applying machine learning and computer vision to autonomous decision-making.",
+      "items": ["Computer Vision", "Path Planning", "Deep Learning", "OpenCV"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Robotics Research Intern",
+      "company": "Autonomous Systems Lab",
+      "period": "Summer 2024",
+      "accomplishments": [
+        "Developed ROS2 nodes for autonomous navigation in simulated warehouse environments",
+        "Implemented SLAM algorithms using LiDAR data for real-time map generation",
+        "Reduced path planning computation time by 40% through optimized A* implementation",
+        "Collaborated with a team of 5 researchers on sensor fusion pipelines"
+      ]
+    },
+    {
+      "role": "Embedded Systems Intern",
+      "company": "Tech Startup — Drone Division",
+      "period": "Winter 2023",
+      "accomplishments": [
+        "Designed PID controllers for quadcopter stability in outdoor flight tests",
+        "Integrated IMU and GPS modules for autonomous waypoint navigation",
+        "Wrote firmware in C++ for STM32-based flight controllers"
+      ]
+    }
+  ],
+  "achievements": [
+    { "icon": "Trophy", "title": "1st Place — National Robotics Competition 2024" },
+    { "icon": "Award", "title": "Best Innovation Award — College Tech Fest 2023" },
+    { "icon": "Star", "title": "Published research paper on autonomous navigation" },
+    { "icon": "Medal", "title": "Dean's List — Academic Excellence 2023" },
+    { "icon": "Target", "title": "Completed 500+ hours of robotics simulation projects" }
+  ],
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "email": "your.email@example.com"
+  },
+  "formspreeId": "YOUR_FORMSPREE_ID"
+}

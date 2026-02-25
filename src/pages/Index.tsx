@@ -1,13 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from 'react';
+import Preloader from '@/components/Preloader';
+import CursorTrail from '@/components/CursorTrail';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Timeline from '@/components/sections/Timeline';
+import Skills from '@/components/sections/Skills';
+import Experience from '@/components/sections/Experience';
+import Projects from '@/components/sections/Projects';
+import Achievements from '@/components/sections/Achievements';
+import Contact from '@/components/sections/Contact';
 
 const Index = () => {
+  const [ready, setReady] = useState(false);
+  const onComplete = useCallback(() => setReady(true), []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Preloader onComplete={onComplete} />
+      {ready && (
+        <>
+          <CursorTrail />
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Timeline />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Achievements />
+            <Contact />
+          </main>
+          <Footer />
+        </>
+      )}
+    </>
   );
 };
 

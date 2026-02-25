@@ -1,0 +1,14 @@
+{
+  "id": "robotic-arm",
+  "title": "6-DOF Robotic Arm Simulation",
+  "summary": "Simulated a 6-degree-of-freedom robotic arm in Gazebo with inverse kinematics and pick-and-place task planning.",
+  "tech": ["ROS", "Gazebo", "MoveIt", "Python", "URDF"],
+  "type": "simulation",
+  "role": "Simulation Engineer",
+  "image": "",
+  "video": "",
+  "githubUrl": "",
+  "demoUrl": "",
+  "has3DViewer": true,
+  "featured": false
+}

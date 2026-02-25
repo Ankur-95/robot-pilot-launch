@@ -1,73 +1,51 @@
-# Welcome to your Lovable project
+# Ankur Rakesh Ujawane — Robotics Portfolio
 
-## Project info
+A premium, aerospace-themed dark portfolio website built with React, Vite, Tailwind CSS, Three.js, and Framer Motion.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✏️ How to Edit Content (No Coding Required)
 
-## How can I edit this code?
+### Update Personal Info, Skills, Experience
 
-There are several ways of editing your application.
+1. Go to your GitHub repository
+2. Navigate to `public/content/siteConfig.json`
+3. Click the ✏️ pencil icon → edit any field → **Commit changes**
 
-**Use Lovable**
+### Add a New Project
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+1. Go to `public/content/projects/`
+2. Create a new `.json` file with this template:
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```json
+{
+  "id": "your-project-name",
+  "title": "Project Title",
+  "summary": "Short description.",
+  "tech": ["ROS", "Python"],
+  "type": "simulation",
+  "role": "Lead Developer",
+  "image": "",
+  "video": "",
+  "githubUrl": "",
+  "demoUrl": "",
+  "has3DViewer": false,
+  "featured": true
+}
 ```
 
-**Edit a file directly in GitHub**
+3. Add the filename to the `projectFiles` array in `src/hooks/useSiteConfig.ts`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Replace Resume
 
-**Use GitHub Codespaces**
+Upload your PDF to `public/resume.pdf`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Replace 3D Model
 
-## What technologies are used for this project?
+Place a `.glb` file in `public/models/` and update `src/components/RobotModel.tsx` to use `useGLTF`
 
-This project is built with:
+### Contact Form
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Sign up at [Formspree](https://formspree.io), get your form ID, and replace `YOUR_FORMSPREE_ID` in `siteConfig.json`
 
-## How can I deploy this project?
+## 🛠 Tech Stack
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+React 18 • Vite • TypeScript • Tailwind CSS • Framer Motion • Three.js • react-three-fiber

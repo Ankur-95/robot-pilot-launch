@@ -3,7 +3,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const iconMap: Record<string, any> = {
-  GraduationCap, Briefcase, Rocket,
+  GraduationCap, Briefcase, Rocket
 };
 
 const About = () => {
@@ -16,9 +16,9 @@ const About = () => {
         <ScrollReveal>
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {config.about.statement}
-            </p>
+            
+
+
           </div>
         </ScrollReveal>
 
@@ -34,13 +34,13 @@ const About = () => {
                   <h3 className="font-display font-semibold text-lg mb-2">{h.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{h.description}</p>
                 </div>
-              </ScrollReveal>
-            );
+              </ScrollReveal>);
+
           })}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default About;

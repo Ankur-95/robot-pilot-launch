@@ -72,7 +72,7 @@ const About = () => {
                 <ActiveIcon size={24} className="text-primary" />
               </div>
               <h3 className="font-display font-bold text-xl mb-3">{activeHighlight.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{activeHighlight.description}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{activeHighlight.description}</p>
             </motion.div>
           </motion.div>
         )}

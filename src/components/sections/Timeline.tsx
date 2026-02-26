@@ -10,7 +10,7 @@ const Timeline = () => {
       <div className="container mx-auto px-4 md:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold">Journey</h2>
+            
             <p className="text-muted-foreground mt-2">Education & milestones</p>
           </div>
         </ScrollReveal>
@@ -19,8 +19,8 @@ const Timeline = () => {
           {/* Vertical line */}
           <div className="absolute left-[19px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-border" />
 
-          {config.timeline.map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
+          {config.timeline.map((item, i) =>
+          <ScrollReveal key={i} delay={i * 0.1}>
               <div className={`relative flex items-start gap-6 mb-10 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 {/* Dot */}
                 <div className="absolute left-[15px] md:left-1/2 md:-translate-x-1/2 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background z-10 mt-2" />
@@ -34,11 +34,11 @@ const Timeline = () => {
                 </div>
               </div>
             </ScrollReveal>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default Timeline;

@@ -8,9 +8,7 @@ const Achievements = () => {
   const { config } = useSiteConfig();
   if (!config) return null;
 
-  return (
-    <section id="achievements" className="py-24 md:py-32">
-      
+  return;
 
 
 
@@ -34,7 +32,9 @@ const Achievements = () => {
 
 
 
-    </section>);
+
+
+
 
 };
 

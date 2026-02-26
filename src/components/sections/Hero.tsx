@@ -70,10 +70,10 @@ const Hero = () => {
 
                 <div className="flex flex-wrap gap-3">
                   <Button asChild className="glow-cyan">
-                    <a href="#contact">
-                      <Send size={16} />
-                      Contact Me
-                    </a>
+                    
+
+
+
                   </Button>
                   <Button variant="outline" asChild>
                     <a href="#projects">

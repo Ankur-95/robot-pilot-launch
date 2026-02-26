@@ -16,8 +16,8 @@ const Header = () => {
   const { isDark, toggle } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50">
-      <nav className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-border/50">
+      <nav className="w-full px-6 md:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
         
 
@@ -29,7 +29,7 @@ const Header = () => {
           <a
             key={link.href}
             href={link.href}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group">
+            className="text-sm font-semibold tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors relative group">
 
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all group-hover:w-full" />

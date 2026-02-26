@@ -26,12 +26,12 @@ const Timeline = () => {
                 <div className="absolute left-[15px] md:left-1/2 md:-translate-x-1/2 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background z-10 mt-2" />
 
                 {/* Content */}
-                <div className={`ml-12 md:ml-0 md:w-[calc(50%-30px)] ${i % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8 md:ml-auto'}`}>
-                  <span className="font-mono text-xs text-primary font-semibold">{item.year}</span>
-                  <h3 className="font-display font-semibold mt-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.institution}</p>
-                  <p className="text-sm text-muted-foreground/70 mt-1">{item.description}</p>
-                </div>
+                
+
+
+
+
+
               </div>
             </ScrollReveal>
           )}

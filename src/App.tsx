@@ -20,7 +20,7 @@ const App = () => (
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      <HashRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );

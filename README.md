@@ -6,7 +6,7 @@ A premium, aerospace-themed dark portfolio website built with React, Vite, Tailw
 
 ### Update Personal Info, Skills, Experience
 
-1. Go to your GitHub repository
+1.  Go to your GitHub repository
 2. Navigate to `public/content/siteConfig.json`
 3. Click the ✏️ pencil icon → edit any field → **Commit changes**
 

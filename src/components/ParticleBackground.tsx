@@ -5,7 +5,6 @@ const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isMobile = useIsMobile();
   const animRef = useRef<number>(0);
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   const init = useCallback(() => {
     const canvas = canvasRef.current;
@@ -42,7 +41,7 @@ const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'hsla(192, 80%, 50%, 0.5)';
+        ctx.fillStyle = 'hsla(270, 85%, 65%, 0.5)';
         ctx.fill();
       });
 
@@ -55,7 +54,7 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(192, 80%, 50%, ${0.15 * (1 - dist / connectDist)})`;
+            ctx.strokeStyle = `hsla(270, 85%, 65%, ${0.15 * (1 - dist / connectDist)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

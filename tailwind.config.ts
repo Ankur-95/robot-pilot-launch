@@ -52,8 +52,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        cyan: {
-          glow: "hsl(var(--cyan-glow))",
+        neon: {
+          glow: "hsl(var(--neon-glow))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -93,8 +93,8 @@ export default {
           "50%": { opacity: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--cyan-glow) / 0.2)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--cyan-glow) / 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--neon-glow) / 0.2)" },
+          "50%": { boxShadow: "0 0 40px hsl(var(--neon-glow) / 0.4)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },

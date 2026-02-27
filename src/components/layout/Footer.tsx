@@ -21,9 +21,6 @@ const Footer = () => {
             <a href="#" className="font-display text-xl font-bold tracking-tight">
               <span className="text-primary">A</span>RU
             </a>
-            <p className="mt-2 text-sm text-muted-foreground max-w-xs">
-              {config?.personal.persona || 'Robotics Enthusiast'}
-            </p>
           </div>
 
           {/* Quick links */}

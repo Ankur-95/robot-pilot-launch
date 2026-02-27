@@ -15,7 +15,7 @@ const CursorTrail = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const trail: { x: number; y: number; alpha: number }[] = [];
+    const trail: { x: number; y: number; alpha: number; size: number }[] = [];
 
     const onResize = () => {
       canvas.width = window.innerWidth;
@@ -23,21 +23,37 @@ const CursorTrail = () => {
     };
 
     const onMove = (e: MouseEvent) => {
-      trail.push({ x: e.clientX, y: e.clientY, alpha: 1 });
-      if (trail.length > 20) trail.shift();
+      // Add multiple particles per move for density
+      for (let i = 0; i < 2; i++) {
+        trail.push({
+          x: e.clientX + (Math.random() - 0.5) * 8,
+          y: e.clientY + (Math.random() - 0.5) * 8,
+          alpha: 0.6 + Math.random() * 0.3,
+          size: 12 + Math.random() * 20,
+        });
+      }
+      if (trail.length > 50) trail.splice(0, trail.length - 50);
     };
 
     let raf: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      trail.forEach((p, i) => {
-        p.alpha -= 0.04;
+
+      trail.forEach((p) => {
+        p.alpha -= 0.012;
         if (p.alpha <= 0) return;
+
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+        gradient.addColorStop(0, `hsla(270, 85%, 65%, ${p.alpha * 0.25})`);
+        gradient.addColorStop(0.4, `hsla(275, 80%, 60%, ${p.alpha * 0.12})`);
+        gradient.addColorStop(1, `hsla(280, 75%, 55%, 0)`);
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 3 + i * 0.3, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(192, 80%, 55%, ${p.alpha * 0.4})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
         ctx.fill();
       });
+
       while (trail.length > 0 && trail[0].alpha <= 0) trail.shift();
       raf = requestAnimationFrame(animate);
     };

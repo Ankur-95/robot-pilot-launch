@@ -1,169 +1,70 @@
+# Updated Plan: Purple Neon Theme + Spline Robot + Cursor Trail + Cleanup
 
+## Clarifications Addressed
 
-# Ankur Rakesh Ujawane — Robotics Portfolio Website
-
-## Overview
-A premium, aerospace-themed dark portfolio website with Apple-style minimal aesthetics, interactive animations, and easy content editing via JSON config files.
-
----
-
-## Phase 1: Foundation & Theming
-
-### Dark/Light Theme System
-- Dark graphite/navy base as default with metallic steel highlights and aerospace cyan accents
-- Elegant light mode alternative
-- CSS variables for seamless switching
-- Glassmorphism + metallic card accents throughout
-
-### Typography & Layout
-- Refined sans-serif typography (Inter/Space Grotesk) with big spaced headlines
-- Mobile-first responsive design with generous whitespace
-- High visual hierarchy with surgical gradient usage
-
-### Content Config System
-- `/content/siteConfig.json` storing all editable text: name, title, about, skills, experience, achievements, social links, contact info
-- `/content/projects/` folder structure with sample project JSON entries
-- Site reads all content from these config files for easy GitHub-based editing
+1. **Spline Robot stays fixed**: The 3D robot will be a **fixed-position background** middle(`position: fixed`) so it stays in place while page content scrolls over it. Content sections will have opaque/semi-transparent backgrounds so text remains readable as it passes over the robot.
+2. **Remove the persona tagline**: The text "Future Robotics Engineer . Robotics Research Enthusiast . AI + Robotics Integrator" is the `personal.persona` field rendered in the Footer. This will be removed from the Footer entirely.
 
 ---
 
-## Phase 2: Header & Preloader
+## Changes
 
-### Sticky Header
-- Initials logo "ARU", anchor nav links (About / Skills / Experience / Projects / Contact)
-- Small resume download icon (PDF placeholder)
-- Dark/Light mode toggle
-- Collapses to hamburger on mobile
+### 1. Spline 3D Robot as Fixed Background
 
-### Boot-Up Preloader
-- Terminal-style "system initializing..." sequence (2-3 seconds)
-- Shows lines like `> Loading modules... ROS | Gazebo | Python`
-- Skip button to bypass
-- Plays once per session only
+- Install `@splinetool/react-spline`
+- `link :` :**[https://prod.spline.design/qSj32lp8DhyJ6Hoe/scene.splinecode](https://prod.spline.design/qSj32lp8DhyJ6Hoe/scene.splinecode)**
+- Create a new component (or repurpose `RobotModel.tsx`) that renders the Spline scene with `position: fixed; inset: 0; z-index: 0` so it sits behind all content and does not scroll
+- Place it at the top level in `Index.tsx` (outside `<main>`) so it persists across all sections
+- Remove the robot from the Hero grid layout; hero text will overlay the background
+- Add semi-opaque backgrounds to content sections (About, Skills, etc.) so they're readable over the robot
 
----
+### 2. Purple Neon Theme (replace all cyan/blue)
 
-## Phase 3: Hero Section
+- Update all CSS variables in `src/index.css` (both `:root` and `.dark`):
+  - Primary/accent: cyan (192) to neon purple (~270-280)
+  - Glow variables: purple neon
+  - Gradients: purple-based
+  - Glass effects: purple-tinted
+- Update `tailwind.config.ts` glow keyframe colors
+- Update `ParticleBackground.tsx` particle colors to purple
+- The terminal prompt color, glow-cyan class, and all `text-primary` references will automatically update via CSS variables
 
-### Terminal → Hero Transition
-- Typewriter effect briefly prints name and title in terminal style
-- Smoothly transitions/fades into the full hero layout
+### 3. Cursor Trail Redesign (Sophisticated, Dusty, Cloudy)
 
-### Hero Layout
-- Left column: Name, one-line persona, two CTAs (Contact / Projects)
-- Right column: 3D robot model area (Three.js with react-three-fiber, placeholder geometry until .glb model is added — code ready for glTF swap)
-- Robot gently rotates, reacts to mouse position; tap-to-pause on mobile
+- Rewrite `CursorTrail.tsx`:
+  - Use `ctx.createRadialGradient()` for soft, blurred particle edges
+  - Increase trail length (40 points) with slower alpha decay (0.015)
+  - Larger, low-opacity particles for a cloudy/dusty feel
+  - Varying particle sizes for organic effect
+  - Purple color palette
 
-### Particle Background
-- Lightweight canvas-based particle system behind hero
-- Reduced density on mobile for performance
-- Subtle floating dots with connection lines in cyan accent
+### 4. Remove Persona Tagline from Footer
 
-### Cursor Trail
-- Subtle glowing cursor trail effect on desktop only
-- Performance-friendly with requestAnimationFrame
+- Remove the `<p>` tag showing `config?.personal.persona` from `Footer.tsx` (line 24-26)
+- Keep the brand logo, social links, copyright, and back-to-top button
 
----
+### 5. Hero Layout Update
 
-## Phase 4: About Section
-
-### Professional Statement
-- Short paragraph about Ankur's passion for robotics and AI integration
-- Clean, centered layout with fade-in animation
-
-### Three Micro-Highlights
-- Education: DY Patil College of Engineering, Pune
-- Experience: Internship/research highlights
-- Drive: "Ready to work hard enough to make the competition less"
-- Displayed as glassmorphism cards with metallic hover effects
+- Remove the two-column grid (no more robot column)
+- Center hero text content with proper z-index to overlay the fixed Spline background
 
 ---
 
-## Phase 5: Timeline Section
+## Files Modified
 
-### Education & Journey
-- Vertical timeline with year markers
-- Each entry: year, role/degree, institution
-- Scroll-triggered reveal animations
-- Minimal connecting line with cyan accent dots
 
----
+| File                                    | Change                                    |
+| --------------------------------------- | ----------------------------------------- |
+| `src/index.css`                         | All color variables to purple/black/white |
+| `src/components/CursorTrail.tsx`        | New dusty/cloudy particle trail           |
+| `src/components/RobotModel.tsx`         | Replace with fixed-position Spline embed  |
+| `src/components/sections/Hero.tsx`      | Remove robot column, center content       |
+| `src/components/layout/Footer.tsx`      | Remove persona tagline line               |
+| `src/pages/Index.tsx`                   | Move Spline background to top level       |
+| `src/components/ParticleBackground.tsx` | Update particle colors to purple          |
+| `tailwind.config.ts`                    | Update glow keyframe colors               |
 
-## Phase 6: Skills Section
 
-### Category-Based Skill Display
-- Programming: C++, Python
-- Robotics: ROS, Gazebo, RViz, Simulation
-- Embedded Systems
-- AI in Robotics
-- No progress bars — clean list with small icons per skill
-- One-line competency note per category
-- Terminal-style console widget cycling through: "ROS | Gazebo | RViz | C++ | Python"
+## New Dependency
 
----
-
-## Phase 7: Experience Section
-
-### Internship/Work Cards
-- Glassmorphism cards with metallic sheen on hover (lift effect)
-- Each card: role, company, 2-4 bullet accomplishments
-- Scroll-triggered entrance animations
-- Placeholder entries from siteConfig.json
-
----
-
-## Phase 8: Projects Section
-
-### Interactive Project Grid
-- Cards with placeholder states: "Upload media / Add GitHub link"
-- Each card supports: title, summary, tech tags, image/video area, GitHub link, type badge (simulation/physical), role, "View demo" or "Coming soon" button
-- 3D viewer placeholder slot per project
-- Content loaded from `/content/projects/` JSON files
-- Dedicated `/projects` subpage with expanded view
-
----
-
-## Phase 9: Achievements Section
-
-### Badges & Awards
-- Clean list/badge layout
-- Small icons with achievement titles
-- Loaded from siteConfig.json
-
----
-
-## Phase 10: Contact & Footer
-
-### Contact Section
-- Form with name, email, message fields (configured for Formspree integration)
-- mailto: fallback link
-- Social links (GitHub, LinkedIn, etc.)
-- City text: "Pune, India"
-
-### Footer
-- Copyright line
-- Quick nav links
-- Tiny resume download icon
-- Social icons repeated
-
----
-
-## Phase 11: Polish & Documentation
-
-### Accessibility
-- ARIA labels on 3D model with fallback image
-- Keyboard navigation throughout
-- Color contrast compliance
-- Semantic HTML
-
-### Performance
-- Lazy-loaded images and 3D model
-- Reduced animations on mobile
-- Lower particle density on small screens
-- Optimized re-renders
-
-### README & Admin Docs
-- README.md with non-technical editing instructions
-- How to: add projects, update social links, replace hero model, update resume
-- Step-by-step GitHub web UI editing guide
-
+- `@splinetool/react-spline`

@@ -1,10 +1,10 @@
-import { Github, Linkedin, Twitter, Download, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, ArrowUp } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
+  
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -21,6 +21,10 @@ const Footer = () => {
             <a href="#" className="font-display text-xl font-bold tracking-tight">
               <span className="text-primary">A</span>RU
             </a>
+            <p className="flex items-center gap-1.5 text-sm text-muted-foreground mt-2">
+              <MapPin size={14} className="text-primary" />
+              {config?.personal.city || 'Pune, India'}
+            </p>
           </div>
 
           {/* Quick links */}
@@ -53,11 +57,9 @@ const Footer = () => {
                   <Linkedin size={18} />
                 </a>
               )}
-              {config?.social.twitter && (
-                <a href={config.social.twitter} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="Twitter">
-                  <Twitter size={18} />
-                </a>
-              )}
+              <a href={`mailto:${config?.social.email || 'ankurujawane@gmail.com'}`} className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="Email">
+                <Mail size={18} />
+              </a>
               <a href="/resume.pdf" download className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="Download Resume">
                 <Download size={18} />
               </a>

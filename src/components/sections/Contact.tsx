@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, MapPin, Mail, Github, Linkedin } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Button } from '@/components/ui/button';
@@ -78,30 +78,6 @@ const Contact = () => {
             )}
           </ScrollReveal>
 
-          <ScrollReveal delay={0.2}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1.5">
-                <MapPin size={14} className="text-primary" />
-                {config?.personal.city || 'Pune, India'}
-              </div>
-              <a href={`mailto:${config?.social.email || ''}`} className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Mail size={14} className="text-primary" />
-                {config?.social.email || 'your.email@example.com'}
-              </a>
-            </div>
-            <div className="mt-4 flex justify-center gap-3">
-              {config?.social.github && (
-                <a href={config.social.github} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
-                  <Github size={18} />
-                </a>
-              )}
-              {config?.social.linkedin && (
-                <a href={config.social.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn">
-                  <Linkedin size={18} />
-                </a>
-              )}
-            </div>
-          </ScrollReveal>
         </div>
       </div>
     </section>

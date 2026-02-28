@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Send } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import ParticleBackground from '@/components/ParticleBackground';
-import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const { config } = useSiteConfig();
@@ -61,17 +60,6 @@ const Hero = () => {
                 </h1>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-3">
-                <Button asChild className="glow-neon">
-                  <a href="#contact">
-                    <Send size={16} className="mr-2" />
-                    Get in Touch
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href="#projects">View Projects</a>
-                </Button>
-              </div>
             </motion.div>
           )}
         </div>

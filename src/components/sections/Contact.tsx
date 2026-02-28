@@ -1,32 +1,32 @@
 import { useState } from 'react';
-import { Send } from 'lucide-react';
-import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { Send, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
-  const { config } = useSiteConfig();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formspreeId = config?.formspreeId;
-    if (formspreeId && formspreeId !== 'YOUR_FORMSPREE_ID') {
-      // Submit to Formspree
-      const form = e.currentTarget;
-      fetch(`https://formspree.io/f/${formspreeId}`, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      }).then(() => setSubmitted(true));
-    } else {
-      // Fallback: mailto
-      const form = e.currentTarget;
-      const data = new FormData(form);
-      const email = config?.social.email || 'your.email@example.com';
-      window.location.href = `mailto:${email}?subject=Portfolio Contact from ${data.get('name')}&body=${data.get('message')}`;
+    setLoading(true);
+    try {
+      await emailjs.sendForm(
+        'service_5zvm1pi',
+        'template_cnu08xj',
+        e.currentTarget,
+        'euVOrR_3cpj8GUt4m'
+      );
       setSubmitted(true);
+      toast({ title: "Message sent!", description: "I'll get back to you soon." });
+    } catch (error) {
+      toast({ title: "Failed to send", description: "Please try again.", variant: "destructive" });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,13 +71,13 @@ const Contact = () => {
                     className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
                   />
                 </div>
-                <Button type="submit" className="w-full glow-cyan">
-                  <Send size={16} /> Send Message
+                <Button type="submit" className="w-full glow-cyan" disabled={loading}>
+                  {loading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                  {loading ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             )}
           </ScrollReveal>
-
         </div>
       </div>
     </section>

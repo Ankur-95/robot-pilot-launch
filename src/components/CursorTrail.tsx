@@ -15,7 +15,7 @@ const CursorTrail = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const maxLength = 30;
+    const maxLength = 55;
     const points: { x: number; y: number }[] = [];
 
     const onResize = () => {
@@ -35,8 +35,8 @@ const CursorTrail = () => {
       if (points.length > 1) {
         for (let i = 1; i < points.length; i++) {
           const t = i / points.length; // 0→1 (tail→head)
-          const alpha = t * 0.6;
-          const width = t * 4 + 0.5;
+          const alpha = t * 0.8;
+          const width = t * 5 + 0.5;
 
           ctx.beginPath();
           ctx.moveTo(points[i - 1].x, points[i - 1].y);
@@ -49,11 +49,12 @@ const CursorTrail = () => {
 
         // Glowing head dot
         const head = points[points.length - 1];
-        const glow = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 12);
-        glow.addColorStop(0, 'hsla(270, 85%, 75%, 0.5)');
+        const glow = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 20);
+        glow.addColorStop(0, 'hsla(270, 90%, 80%, 0.8)');
+        glow.addColorStop(0.4, 'hsla(270, 85%, 70%, 0.3)');
         glow.addColorStop(1, 'hsla(270, 85%, 65%, 0)');
         ctx.beginPath();
-        ctx.arc(head.x, head.y, 12, 0, Math.PI * 2);
+        ctx.arc(head.x, head.y, 20, 0, Math.PI * 2);
         ctx.fillStyle = glow;
         ctx.fill();
       }

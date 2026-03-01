@@ -15,7 +15,8 @@ const CursorTrail = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const trail: { x: number; y: number; alpha: number; size: number }[] = [];
+    const maxLength = 30;
+    const points: { x: number; y: number }[] = [];
 
     const onResize = () => {
       canvas.width = window.innerWidth;
@@ -23,38 +24,45 @@ const CursorTrail = () => {
     };
 
     const onMove = (e: MouseEvent) => {
-      // Add multiple particles per move for density
-      for (let i = 0; i < 2; i++) {
-        trail.push({
-          x: e.clientX + (Math.random() - 0.5) * 8,
-          y: e.clientY + (Math.random() - 0.5) * 8,
-          alpha: 0.6 + Math.random() * 0.3,
-          size: 12 + Math.random() * 20,
-        });
-      }
-      if (trail.length > 50) trail.splice(0, trail.length - 50);
+      points.push({ x: e.clientX, y: e.clientY });
+      if (points.length > maxLength) points.shift();
     };
 
     let raf: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      trail.forEach((p) => {
-        p.alpha -= 0.012;
-        if (p.alpha <= 0) return;
+      if (points.length > 1) {
+        for (let i = 1; i < points.length; i++) {
+          const t = i / points.length; // 0→1 (tail→head)
+          const alpha = t * 0.6;
+          const width = t * 4 + 0.5;
 
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-        gradient.addColorStop(0, `hsla(270, 85%, 65%, ${p.alpha * 0.25})`);
-        gradient.addColorStop(0.4, `hsla(275, 80%, 60%, ${p.alpha * 0.12})`);
-        gradient.addColorStop(1, `hsla(280, 75%, 55%, 0)`);
+          ctx.beginPath();
+          ctx.moveTo(points[i - 1].x, points[i - 1].y);
+          ctx.lineTo(points[i].x, points[i].y);
+          ctx.strokeStyle = `hsla(270, 85%, 65%, ${alpha})`;
+          ctx.lineWidth = width;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        }
 
+        // Glowing head dot
+        const head = points[points.length - 1];
+        const glow = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 12);
+        glow.addColorStop(0, 'hsla(270, 85%, 75%, 0.5)');
+        glow.addColorStop(1, 'hsla(270, 85%, 65%, 0)');
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
+        ctx.arc(head.x, head.y, 12, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
         ctx.fill();
-      });
+      }
 
-      while (trail.length > 0 && trail[0].alpha <= 0) trail.shift();
+      // Gradually shrink trail when idle
+      if (points.length > 0) {
+        points[0].x += (points[1]?.x ?? points[0].x - points[0].x) * 0.01;
+      }
+
       raf = requestAnimationFrame(animate);
     };
 

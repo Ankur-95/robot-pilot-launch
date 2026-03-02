@@ -59,18 +59,14 @@ const ProjectCard = ({ project }: { project: ProjectConfig }) => {
             </Button>
           ) : (
             <Button size="sm" variant="outline" disabled className="opacity-50">
-              <Github size={14} /> Add GitHub
+              <Github size={14} /> GitHub Link
             </Button>
           )}
-          {project.demoUrl ? (
+          {project.demoUrl && (
             <Button size="sm" asChild>
               <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink size={14} /> Demo
               </a>
-            </Button>
-          ) : (
-            <Button size="sm" variant="secondary" disabled className="opacity-50">
-              Coming Soon
             </Button>
           )}
         </div>

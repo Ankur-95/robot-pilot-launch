@@ -64,14 +64,12 @@ const ProjectsPage = () => {
                           <a href={p.githubUrl} target="_blank" rel="noopener noreferrer"><Github size={14} /> GitHub</a>
                         </Button>
                       ) : (
-                        <Button size="sm" variant="outline" disabled className="opacity-50"><Github size={14} /> Add GitHub</Button>
+                        <Button size="sm" variant="outline" disabled className="opacity-50"><Github size={14} /> GitHub Link</Button>
                       )}
-                      {p.demoUrl ? (
+                      {p.demoUrl && (
                         <Button size="sm" asChild>
                           <a href={p.demoUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={14} /> View Demo</a>
                         </Button>
-                      ) : (
-                        <Button size="sm" variant="secondary" disabled className="opacity-50">Coming Soon</Button>
                       )}
                     </div>
                   </div>

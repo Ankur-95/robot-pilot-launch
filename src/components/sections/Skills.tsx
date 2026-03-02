@@ -25,23 +25,25 @@ const Skills = () => {
             const Icon = iconMap[skill.icon] || Code;
             return (
               <ScrollReveal key={skill.category} delay={i * 0.1}>
-                <div className="glass-card p-6 hover:scale-[1.02] transition-transform duration-300">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon size={18} className="text-primary" />
+                <div className="glow-border-wrapper rounded-xl hover:scale-[1.02] transition-transform duration-300">
+                  <div className="glass-card p-6 h-full relative z-[1]">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Icon size={18} className="text-primary" />
+                      </div>
+                      <h3 className="font-display font-semibold">{skill.category}</h3>
                     </div>
-                    <h3 className="font-display font-semibold">{skill.category}</h3>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-3">{skill.note}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {skill.items.map(item => (
-                      <span
-                        key={item}
-                        className="px-2.5 py-1 text-xs rounded-md bg-primary/10 text-primary font-medium"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                    <p className="text-xs text-muted-foreground mb-3">{skill.note}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {skill.items.map(item => (
+                        <span
+                          key={item}
+                          className="px-2.5 py-1 text-xs rounded-md bg-primary/10 text-primary font-medium"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

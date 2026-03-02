@@ -126,6 +126,42 @@
     box-shadow: 0 0 20px hsl(var(--neon-glow) / 0.3),
                 0 0 60px hsl(var(--neon-glow) / 0.1);
   }
+  .glow-border-wrapper {
+    position: relative;
+    padding: 1.5px;
+    overflow: hidden;
+  }
+  .glow-border-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--glow-angle, 0deg),
+      transparent 0%,
+      hsl(var(--neon-glow) / 0.8) 10%,
+      transparent 20%,
+      transparent 100%
+    );
+    animation: glow-spin 3s linear infinite;
+  }
+  .glow-border-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    border-radius: inherit;
+    background: hsl(var(--card));
+  }
+
+  @property --glow-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes glow-spin {
+    to { --glow-angle: 360deg; }
+  }
   .terminal-text {
     font-family: 'Space Grotesk', monospace;
     @apply text-primary;

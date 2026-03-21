@@ -15,7 +15,8 @@ const CursorTrail = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const trail: { x: number; y: number; alpha: number; size: number }[] = [];
+    const points: { x: number; y: number }[] = [];
+    const MAX_POINTS = 30;
 
     const onResize = () => {
       canvas.width = window.innerWidth;
@@ -23,38 +24,36 @@ const CursorTrail = () => {
     };
 
     const onMove = (e: MouseEvent) => {
-      // Add multiple particles per move for density
-      for (let i = 0; i < 2; i++) {
-        trail.push({
-          x: e.clientX + (Math.random() - 0.5) * 8,
-          y: e.clientY + (Math.random() - 0.5) * 8,
-          alpha: 0.6 + Math.random() * 0.3,
-          size: 12 + Math.random() * 20,
-        });
-      }
-      if (trail.length > 50) trail.splice(0, trail.length - 50);
+      points.push({ x: e.clientX, y: e.clientY });
+      if (points.length > MAX_POINTS) points.shift();
     };
 
     let raf: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      trail.forEach((p) => {
-        p.alpha -= 0.012;
-        if (p.alpha <= 0) return;
+      if (points.length > 1) {
+        for (let i = 1; i < points.length; i++) {
+          const alpha = (i / points.length) * 0.45;
+          ctx.beginPath();
+          ctx.moveTo(points[i - 1].x, points[i - 1].y);
+          ctx.lineTo(points[i].x, points[i].y);
+          ctx.strokeStyle = `hsla(270, 85%, 65%, ${alpha})`;
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.shadowColor = 'hsla(270, 85%, 65%, 0.4)';
+          ctx.shadowBlur = 4;
+          ctx.stroke();
+        }
+        ctx.shadowBlur = 0;
+      }
 
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-        gradient.addColorStop(0, `hsla(270, 85%, 65%, ${p.alpha * 0.25})`);
-        gradient.addColorStop(0.4, `hsla(275, 80%, 60%, ${p.alpha * 0.12})`);
-        gradient.addColorStop(1, `hsla(280, 75%, 55%, 0)`);
+      // Slowly shrink trail when idle
+      if (points.length > 0) {
+        points[0].x += 0; // keep reference
+      }
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-      });
-
-      while (trail.length > 0 && trail[0].alpha <= 0) trail.shift();
       raf = requestAnimationFrame(animate);
     };
 
@@ -62,10 +61,16 @@ const CursorTrail = () => {
     window.addEventListener('mousemove', onMove);
     animate();
 
+    // Decay trail when mouse stops
+    const decay = setInterval(() => {
+      if (points.length > 0) points.shift();
+    }, 50);
+
     return () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(raf);
+      clearInterval(decay);
     };
   }, [isMobile]);
 

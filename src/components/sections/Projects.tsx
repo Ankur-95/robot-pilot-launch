@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: { project: ProjectConfig }) => {
           </Badge>
         </div>
         <p className="text-sm text-muted-foreground mb-1">{project.summary}</p>
-        <p className="text-xs text-muted-foreground/70 mb-3">Role: {project.role}</p>
+        
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tech.map(t => (

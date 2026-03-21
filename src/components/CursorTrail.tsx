@@ -83,7 +83,6 @@ const CursorTrail = () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(raf);
-      clearInterval(decay);
     };
   }, [isMobile]);
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import ParticleBackground from '@/components/ParticleBackground';
+
 
 const Hero = () => {
   const { config } = useSiteConfig();
@@ -25,7 +25,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      <ParticleBackground />
+      
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="max-w-2xl mx-auto text-center space-y-6">

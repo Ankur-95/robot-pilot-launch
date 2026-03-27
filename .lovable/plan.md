@@ -1,29 +1,20 @@
 
 
-# Cursor Trail: Laser-style with Subtle Fading Line
+## Subtle Neon Asteroid Background Fix
 
-## Problem
-Current trail uses scattered, random-offset radial gradient particles creating a dusty/cloudy look. You want a clean, concise laser-like trail (like a PPT laser pointer) -- a smooth connected line that fades out behind the cursor.
+### Problems
+1. Particles move erratically — random speed changes every frame cause jittery, chaotic motion
+2. Particles are too bright and too large — high alpha, strong glow, and large sizes make them distracting
 
-## Approach
+### Plan
 
-### File: `src/components/CursorTrail.tsx`
+**File: `src/components/NeonAsteroidBackground.tsx`**
 
-Replace the particle system with a **connected line trail**:
+- **Reduce particle count**: 80 desktop / 40 mobile (down from 120/60)
+- **Smaller particles**: size range `0.5–2.0` (down from `1.2–4.7`)
+- **Steady drift**: Remove the random speed perturbation (`+= (Math.random() - 0.5) * 0.06`) so particles float in consistent directions at constant slow speed (`0.15–0.35` range, down from `0.7`)
+- **Much dimmer glow**: Reduce `shadowBlur` from 18 to 6, lower `globalAlpha` to `0.2–0.35` range (down from `0.5–1.0`), use lower lightness values (`60%` instead of `88%`)
+- **Softer trail fade**: Change background overlay alpha from `0.15` to `0.08` for smoother, calmer fading
 
-- Store the last ~30 cursor positions (no random offsets -- exact cursor coordinates)
-- Draw a single smooth path through all points using `ctx.lineTo()`
-- Use a purple gradient stroke (`strokeStyle`) that fades from opaque at the cursor to transparent at the tail
-- Line width: thin (2-3px) for a laser look
-- Alpha decay: points fade out smoothly so the tail shrinks
-- No radial gradients, no scattered particles -- just a clean, thin glowing line
-- Add a subtle glow effect using `ctx.shadowBlur` (small value ~4px) for a soft neon edge
-
-### Key differences from current:
-| Current (dusty) | New (laser) |
-|---|---|
-| Random offset particles | Exact cursor positions |
-| Large radial gradients (12-32px) | Thin line stroke (2-3px) |
-| Multiple particles per move | One point per move |
-| Blurry cloud effect | Clean connected line |
+Result: gentle, barely-noticeable floating specks that drift smoothly in one direction — like distant stars, not chaotic asteroids.
 

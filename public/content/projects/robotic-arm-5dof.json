@@ -1,0 +1,14 @@
+{
+  "id": "robotic-arm-5dof",
+  "title": "5-DOF Robotic Arm (Pick & Place)",
+  "summary": "Developed control logic for a 5-DOF robotic arm to perform automated pick-and-place tasks. Built Arduino-based control systems with integrated task execution, leveraging AI-assisted tools to accelerate development.",
+  "tech": ["Arduino", "Robotics", "Control Systems", "Automation"],
+  "type": "physical",
+  "role": "",
+  "image": "",
+  "video": "",
+  "githubUrl": "https://github.com/Ankur-95/5-Dof-Robotic-Arm",
+  "demoUrl": "",
+  "has3DViewer": false,
+  "featured": true
+}

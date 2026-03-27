@@ -1,0 +1,14 @@
+{
+  "id": "underwater-welding-bot",
+  "title": "Teleoperated Underwater Welding Bot",
+  "summary": "Designed a conceptual working prototype of a teleoperated underwater robotic system for welding applications. Integrated Arduino-based motor control with an automated outer cover mechanism, focusing on remote operation and underwater feasibility.",
+  "tech": ["Arduino", "Robotics", "Teleoperation", "Embedded Systems", "Mechanical Design"],
+  "type": "physical",
+  "role": "",
+  "image": "",
+  "video": "",
+  "githubUrl": "https://github.com/Ankur-95/Teleoperated-Underwater-Welding-Bot",
+  "demoUrl": "",
+  "has3DViewer": false,
+  "featured": true
+}

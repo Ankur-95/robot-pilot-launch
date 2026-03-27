@@ -84,7 +84,7 @@ export function useProjects() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const projectFiles = ['autonomous-rover', 'drone-controller', 'robotic-arm'];
+    const projectFiles = ['underwater-welding-bot', 'robotic-arm-5dof', 'drone-controller', 'robotic-arm', 'autonomous-rover'];
     Promise.all(
       projectFiles.map(f =>
         fetch(`/content/projects/${f}.json`).then(r => r.json()).catch(() => null)

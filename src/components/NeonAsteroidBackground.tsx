@@ -19,7 +19,7 @@ const NeonAsteroidBackground = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    const count = isMobile ? 60 : 120;
+    const count = isMobile ? 40 : 80;
 
     class Asteroid {
       x: number;
@@ -32,9 +32,9 @@ const NeonAsteroidBackground = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3.5 + 1.2;
-        this.speedX = (Math.random() - 0.5) * 0.7;
-        this.speedY = (Math.random() - 0.5) * 0.7;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
         this.hue = 280 + Math.random() * 40;
       }
 
@@ -45,21 +45,14 @@ const NeonAsteroidBackground = () => {
         if (this.x > canvas.width) this.x = 0;
         if (this.y < 0) this.y = canvas.height;
         if (this.y > canvas.height) this.y = 0;
-        this.speedX += (Math.random() - 0.5) * 0.06;
-        this.speedY += (Math.random() - 0.5) * 0.06;
-        const speed = Math.hypot(this.speedX, this.speedY);
-        if (speed > 1.4) {
-          this.speedX = (this.speedX / speed) * 1.4;
-          this.speedY = (this.speedY / speed) * 1.4;
-        }
       }
 
       draw() {
         ctx.save();
-        ctx.globalAlpha = 0.75 + Math.sin(Date.now() / 800) * 0.25;
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = `hsl(${this.hue}, 100%, 78%)`;
-        ctx.fillStyle = `hsl(${this.hue}, 100%, 88%)`;
+        ctx.globalAlpha = 0.25 + Math.sin(Date.now() / 1200) * 0.1;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = `hsl(${this.hue}, 80%, 55%)`;
+        ctx.fillStyle = `hsl(${this.hue}, 80%, 60%)`;
         ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
         ctx.restore();
       }
@@ -68,7 +61,7 @@ const NeonAsteroidBackground = () => {
     const particles = Array.from({ length: count }, () => new Asteroid());
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(15, 5, 30, 0.15)';
+      ctx.fillStyle = 'rgba(15, 5, 30, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
         p.update();

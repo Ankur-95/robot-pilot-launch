@@ -19,7 +19,7 @@ const NeonAsteroidBackground = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    const count = isMobile ? 40 : 80;
+    const count = isMobile ? 50 : 100;
 
     class Asteroid {
       x: number;

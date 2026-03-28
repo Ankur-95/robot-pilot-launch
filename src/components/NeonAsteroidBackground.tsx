@@ -61,8 +61,7 @@ const NeonAsteroidBackground = () => {
     const particles = Array.from({ length: count }, () => new Asteroid());
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(15, 5, 30, 0.08)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
         p.update();
         p.draw();

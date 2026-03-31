@@ -5,7 +5,7 @@
   "tech": ["Arduino", "Robotics", "Control Systems", "Automation"],
   "type": "physical",
   "role": "",
-  "image": "",
+  "image": "/content/projects/images/robotic-arm-5dof.jpg",
   "video": "",
   "githubUrl": "https://github.com/Ankur-95/5-Dof-Robotic-Arm",
   "demoUrl": "",

@@ -5,7 +5,7 @@
   "tech": ["Arduino", "Robotics", "Teleoperation", "Embedded Systems", "Mechanical Design"],
   "type": "physical",
   "role": "",
-  "image": "",
+  "image": "/content/projects/images/underwater-welding-bot.jpg",
   "video": "",
   "githubUrl": "https://github.com/Ankur-95/Teleoperated-Underwater-Welding-Bot",
   "demoUrl": "",
